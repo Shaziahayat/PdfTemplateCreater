@@ -156,7 +156,7 @@ namespace Services
             }
         }
 
-        public async Task<ITicketTemplate> DeleteTemplateAsync(Guid id)
+        public async Task<ITicketTemplate>DeleteTemplateAsync(Guid id)
         {
             try
             {

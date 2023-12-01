@@ -24,7 +24,7 @@ namespace Configuration
             var builder = new ConfigurationBuilder()
                                 .SetBasePath(Directory.GetCurrentDirectory())
                                 .AddJsonFile(Appsettingfile, optional: true, reloadOnChange: true)
-                                .AddUserSecrets("78db810f-e26c-48b1-828b-b474ce98e9f6", reloadOnChange: true);
+                                .AddUserSecrets("d7bb1668-dd60-49c6-8095-847a0fcc5e79", reloadOnChange: true);
 
             _configuration = builder.Build();
 

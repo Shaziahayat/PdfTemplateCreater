@@ -1,6 +1,5 @@
 ﻿<%@ Page Async="true" Title="Pdf Editor" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="FrontEndEditor._Default" %>
 
-
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <asp:DropDownList ID="ddlLayoutChoice" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlLayoutChoice_SelectedIndexChanged">
         <asp:ListItem Text="Select Layout" Value=""></asp:ListItem>
@@ -19,52 +18,23 @@
                     margin-right: 10px; /* You can adjust the margin value to increase or decrease the gap */
                 }
         </style>
-        <script type="text/javascript">
-            function toggleTextBoxes(checkboxId, textBoxXId, textBoxYId) {
-                var checkbox = document.getElementById(checkboxId);
-                var textBoxX = document.getElementById(textBoxXId);
-                var textBoxY = document.getElementById(textBoxYId);
-
-                if (checkbox.checked) {
-                    textBoxX.style.display = 'block';
-                    textBoxY.style.display = 'block';
-                } else {
-                    textBoxX.style.display = 'none';
-                    textBoxY.style.display = 'none';
-                }
-            }
-
-            // Function to apply toggleTextBoxes to a set of checkboxes and textboxes
-            function applyToggle(containerId, checkboxId, textBoxXId, textBoxYId) {
-                var container = document.getElementById(containerId);
-                var checkbox = container.querySelector('#' + checkboxId);
-                var textBoxX = container.querySelector('#' + textBoxXId);
-                var textBoxY = container.querySelector('#' + textBoxYId);
-
-                // Add event listener to each checkbox
-                checkbox.addEventListener('change', function () {
-                    toggleTextBoxes(checkboxId, textBoxXId, textBoxYId);
-                });
-
-                // Initial call to set visibility based on checkbox state
-                toggleTextBoxes(checkboxId, textBoxXId, textBoxYId);
-            }
-</script>
         <br />
         <!-- Include Options Section -->
         <div id="includeOptionsSection" style="margin-bottom: 5px;">
+             <script src="Scripts/main.js" type="text/javascript"></script>
             <!-- Textboxes for StrukturArtikelPosition -->
             <div id="strukturArtikelContainer" style="margin-bottom: 5px;">
                 <asp:CheckBox ID="chkIncludeStrukturArtikel" runat="server" Text="Struktur Artikel" Checked="false" CssClass="checkbox-with-gap" />
                 <asp:Label ID="lblStrukturArtikelPosition" runat="server"></asp:Label>
                 <asp:TextBox ID="txtStrukturArtikelPositionX" runat="server" />
-                <asp:TextBox ID="txtStrukturArtikelPositionY" runat="server" />
+                <asp:TextBox ID="txtStrukturArtikelPositionY" runat="server"  />
                 <script type="text/javascript">
+                   <%-- var txtStrukturArtikelPositionXid = '<%= txtStrukturArtikelPositionX.ClientID %>'--%>
                     document.getElementById('<%= txtStrukturArtikelPositionX.ClientID %>').setAttribute('placeholder', 'StrukturArtikelPositionX');
                     document.getElementById('<%= txtStrukturArtikelPositionY.ClientID %>').setAttribute('placeholder', 'StrukturArtikelPositionY');
                     // Initial call to set visibility based on checkbox state
                     applyToggle('strukturArtikelContainer', '<%= chkIncludeStrukturArtikel.ClientID %>', '<%= txtStrukturArtikelPositionX.ClientID %>', '<%= txtStrukturArtikelPositionY.ClientID %>');
-</script>
+                </script>
             </div>
             <!-- Textboxes for DescriptionPosition -->
             <div id="DescriptionContainer" style="margin-bottom: 5px;">
@@ -76,7 +46,7 @@
                     document.getElementById('<%= txtDescriptionPositionX.ClientID %>').setAttribute('placeholder', 'DescriptionPositionX');
                     document.getElementById('<%= txtDescriptionPositionY.ClientID %>').setAttribute('placeholder', 'DescriptionPositionY');
                     applyToggle('DescriptionContainer', '<%= chkIncludeDescription.ClientID %>', '<%= txtDescriptionPositionX.ClientID %>', '<%= txtDescriptionPositionY.ClientID %>');
-</script>
+                </script>
             </div>
             <!-- Textboxes for ArtNotTextPosition -->
             <div id="ArtNotTextContainer" style="margin-bottom: 5px;">
@@ -88,7 +58,7 @@
                     document.getElementById('<%= txtArtNotTextPositionX.ClientID %>').setAttribute('placeholder', 'ArtNotTextPositionX');
                     document.getElementById('<%= txtArtNotTextPositionY.ClientID %>').setAttribute('placeholder', 'ArtNotTextPositionY');
                     applyToggle('ArtNotTextContainer', '<%= chkIncludeArtNotText.ClientID %>', '<%= txtArtNotTextPositionX.ClientID %>', '<%= txtArtNotTextPositionY.ClientID %>');
-</script>
+                </script>
             </div>
 
             <!-- Textboxes for RutBokstavPosition -->
@@ -101,7 +71,7 @@
                     document.getElementById('<%= txtRutBokstavPositionX.ClientID %>').setAttribute('placeholder', 'RutBokstavPositionX');
                     document.getElementById('<%= txtRutBokstavPositionY.ClientID %>').setAttribute('placeholder', 'RutBokstavPositionY');
                     applyToggle('RutBokstavContainer', '<%= chkIncludeRutBokstav.ClientID %>', '<%= txtRutBokstavPositionX.ClientID %>', '<%= txtRutBokstavPositionY.ClientID %>');
-</script>
+                </script>
             </div>
 
             <!-- Textboxes for ArtNrPosition -->
@@ -114,7 +84,7 @@
                     document.getElementById('<%= txtArtNrPositionX.ClientID %>').setAttribute('placeholder', 'ArtNrPositionX');
                     document.getElementById('<%= txtArtNrPositionY.ClientID %>').setAttribute('placeholder', 'ArtNrPositionY');
                     applyToggle('ArtNrContainer', '<%= chkIncludeArtNr.ClientID %>', '<%= txtArtNrPositionX.ClientID %>', '<%= txtArtNrPositionY.ClientID %>');
-</script>
+                </script>
             </div>
             <!-- Textboxes for PricePosition -->
             <div id="PriceContainer" style="margin-bottom: 5px;">
@@ -126,7 +96,7 @@
                     document.getElementById('<%= txtPricePositionX.ClientID %>').setAttribute('placeholder', 'PricePositionX');
                     document.getElementById('<%= txtPricePositionY.ClientID %>').setAttribute('placeholder', 'PricePositionY');
                     applyToggle('PriceContainer', '<%= chkIncludePrice.ClientID %>', '<%= txtPricePositionX.ClientID %>', '<%= txtPricePositionY.ClientID %>');
-</script>
+                </script>
             </div>
             <!-- Textboxes for ServiceFeePosition -->
             <div id="ServiceFeeContainer" style="margin-bottom: 5px;">
@@ -138,7 +108,7 @@
                     document.getElementById('<%= txtServiceFeePositionX.ClientID %>').setAttribute('placeholder', 'ServiceFeePositionX');
                     document.getElementById('<%= txtServiceFeePositionY.ClientID %>').setAttribute('placeholder', 'ServiceFeePositionY');
                     applyToggle('ServiceFeeContainer', '<%= chkIncludeServiceFee.ClientID %>', '<%= txtServiceFeePositionX.ClientID %>', '<%= txtServiceFeePositionY.ClientID %>');
-</script>
+                </script>
             </div>
             <!-- Textboxes for ArtNamePosition -->
             <div id="ArtNameContainer" style="margin-bottom: 5px;">
@@ -150,7 +120,7 @@
                     document.getElementById('<%= txtArtNamePositionX.ClientID %>').setAttribute('placeholder', 'ArtNamePositionX');
                     document.getElementById('<%= txtArtNamePositionY.ClientID %>').setAttribute('placeholder', 'ArtNamePositionY');
                     applyToggle('ArtNameContainer', '<%= chkIncludeArtName.ClientID %>', '<%= txtArtNamePositionX.ClientID %>', '<%= txtArtNamePositionY.ClientID %>');
-</script>
+                </script>
             </div>
             <!-- Textboxes for ChairRowPosition -->
             <div id="ChairRowContainer" style="margin-bottom: 5px;">
@@ -162,7 +132,7 @@
                     document.getElementById('<%= txtChairRowPositionX.ClientID %>').setAttribute('placeholder', 'ChairRowPositionX');
                     document.getElementById('<%= txtChairRowPositionY.ClientID %>').setAttribute('placeholder', 'ChairRowPositionY');
                     applyToggle('ChairRowContainer', '<%= chkIncludeChairRow.ClientID %>', '<%= txtChairRowPositionX.ClientID %>', '<%= txtChairRowPositionY.ClientID %>');
-</script>
+                </script>
             </div>
             <!-- Textboxes for ChairNrPosition -->
             <div id="ChairNrContainer" style="margin-bottom: 5px;">
@@ -174,7 +144,7 @@
                     document.getElementById('<%= txtChairNrPositionX.ClientID %>').setAttribute('placeholder', 'ChairNrPositionX');
                     document.getElementById('<%= txtChairNrPositionY.ClientID %>').setAttribute('placeholder', 'ChairNrPositionY');
                     applyToggle('ChairNrContainer', '<%= chkIncludeChairNr.ClientID %>', '<%= txtChairNrPositionX.ClientID %>', '<%= txtChairNrPositionY.ClientID %>');
-</script>
+                </script>
             </div>
             <!-- Textboxes for EventDatePosition -->
             <div id="EventDateContainer" style="margin-bottom: 5px;">
@@ -186,7 +156,7 @@
                     document.getElementById('<%= txtEventDatePositionX.ClientID %>').setAttribute('placeholder', 'EventDatePositionX');
                     document.getElementById('<%= txtEventDatePositionY.ClientID %>').setAttribute('placeholder', 'EventDatePositionY');
                     applyToggle('EventDateContainer', '<%= chkIncludeEventDate.ClientID %>', '<%= txtEventDatePositionX.ClientID %>', '<%= txtEventDatePositionY.ClientID %>');
-</script>
+                </script>
             </div>
             <!-- Textboxes for EventNamePosition -->
             <div id="EventNameContainer" style="margin-bottom: 5px;">
@@ -198,7 +168,7 @@
                     document.getElementById('<%= txtEventNamePositionX.ClientID %>').setAttribute('placeholder', 'EventNamePositionX');
                     document.getElementById('<%= txtEventNamePositionY.ClientID %>').setAttribute('placeholder', 'EventNamePositionY');
                     applyToggle('EventNameContainer', '<%= chkIncludeEventName.ClientID %>', '<%= txtEventNamePositionX.ClientID %>', '<%= txtEventNamePositionY.ClientID %>');
-</script>
+                </script>
             </div>
             <!-- Textboxes for SubEventNamePosition -->
             <div id="SubEventNameContainer" style="margin-bottom: 5px;">
@@ -210,7 +180,7 @@
                     document.getElementById('<%= txtSubEventNamePositionX.ClientID %>').setAttribute('placeholder', 'SubEventNamePositionX');
                     document.getElementById('<%= txtSubEventNamePositionY.ClientID %>').setAttribute('placeholder', 'SubEventNamePositionY');
                     applyToggle('SubEventNameContainer', '<%= chkIncludeSubEventName.ClientID %>', '<%= txtSubEventNamePositionX.ClientID %>', '<%= txtSubEventNamePositionY.ClientID %>');
-</script>
+                </script>
             </div>
             <!-- Textboxes for Logorad1Position -->
             <div id="Logorad1Container" style="margin-bottom: 5px;">
@@ -222,7 +192,7 @@
                     document.getElementById('<%= txtLogorad1PositionX.ClientID %>').setAttribute('placeholder', 'Logorad1PositionX');
                     document.getElementById('<%= txtLogorad1PositionY.ClientID %>').setAttribute('placeholder', 'Logorad1PositionY');
                     applyToggle('Logorad1Container', '<%= chkIncludeLogorad1.ClientID %>', '<%= txtLogorad1PositionX.ClientID %>', '<%= txtLogorad1PositionY.ClientID %>');
-</script>
+                </script>
             </div>
             <!-- Textboxes for Logorad2Position -->
             <div id="Logorad2Container" style="margin-bottom: 5px;">
@@ -234,7 +204,7 @@
                     document.getElementById('<%= txtLogorad2PositionX.ClientID %>').setAttribute('placeholder', 'Logorad2PositionX');
                     document.getElementById('<%= txtLogorad2PositionY.ClientID %>').setAttribute('placeholder', 'Logorad2PositionY');
                     applyToggle('Logorad2Container', '<%= chkIncludeLogorad2.ClientID %>', '<%= txtLogorad2PositionX.ClientID %>', '<%= txtLogorad2PositionY.ClientID %>');
-</script>
+                </script>
             </div>
             <!-- Textboxes for SectionPosition -->
             <div id="SectionContainer" style="margin-bottom: 5px;">
@@ -246,7 +216,7 @@
                     document.getElementById('<%= txtSectionPositionX.ClientID %>').setAttribute('placeholder', 'SectionPositionX');
                     document.getElementById('<%= txtSectionPositionY.ClientID %>').setAttribute('placeholder', 'SectionPositionY');
                     applyToggle('SectionContainer', '<%= chkIncludeSection.ClientID %>', '<%= txtSectionPositionX.ClientID %>', '<%= txtSectionPositionY.ClientID %>');
-</script>
+                </script>
             </div>
             <!-- Textboxes for BookingNrPosition -->
             <div id="BookingNrContainer" style="margin-bottom: 5px;">
@@ -258,7 +228,7 @@
                     document.getElementById('<%= txtBookingNrPositionX.ClientID %>').setAttribute('placeholder', 'BookingNrPositionX');
                     document.getElementById('<%= txtBookingNrPositionY.ClientID %>').setAttribute('placeholder', 'BookingNrPositionY');
                     applyToggle('BookingNrContainer', '<%= chkIncludeBookingNr.ClientID %>', '<%= txtBookingNrPositionX.ClientID %>', '<%= txtBookingNrPositionY.ClientID %>');
-</script>
+                </script>
             </div>
             <!-- Textboxes for WebBookingNumberPosition -->
             <div id="WebBookingNumberContainer" style="margin-bottom: 5px;">
@@ -270,7 +240,7 @@
                     document.getElementById('<%= txtWebBookingNumberPositionX.ClientID %>').setAttribute('placeholder', 'WebBookingNumberPositionX');
                     document.getElementById('<%= txtWebBookingNumberPositionY.ClientID %>').setAttribute('placeholder', 'WebBookingNumberPositionY');
                     applyToggle('WebBookingNumberContainer', '<%= chkIncludeWebBookingNr.ClientID %>', '<%= txtWebBookingNumberPositionX.ClientID %>', '<%= txtWebBookingNumberPositionY.ClientID %>');
-</script>
+                </script>
             </div>
             <!-- Textboxes for FacilityNamePosition -->
             <div id="FacilityNameContainer" style="margin-bottom: 5px;">
@@ -282,7 +252,7 @@
                     document.getElementById('<%= txtFacilityNamePositionX.ClientID %>').setAttribute('placeholder', 'FacilityNamePositionX');
                     document.getElementById('<%= txtFacilityNamePositionY.ClientID %>').setAttribute('placeholder', 'FacilityNamePositionY');
                     applyToggle('FacilityNameContainer', '<%= chkIncludeFacilityName.ClientID %>', '<%= txtFacilityNamePositionX.ClientID %>', '<%= txtFacilityNamePositionY.ClientID %>');
-</script>
+                </script>
             </div>
             <!-- Textboxes for AdPosition -->
             <div id="AdContainer" style="margin-bottom: 5px;">
@@ -294,7 +264,7 @@
                     document.getElementById('<%= txtAdPositionX.ClientID %>').setAttribute('placeholder', 'AdPositionX');
                     document.getElementById('<%= txtAdPositionY.ClientID %>').setAttribute('placeholder', 'AdPositionY');
                     applyToggle('AdContainer', '<%= chkIncludeAd.ClientID %>', '<%= txtAdPositionX.ClientID %>', '<%= txtAdPositionY.ClientID %>');
-</script>
+                </script>
             </div>
             <!-- Textboxes for NamePosition -->
             <div id="NameContainer" style="margin-bottom: 5px;">
@@ -306,7 +276,7 @@
                     document.getElementById('<%= txtNamePositionX.ClientID %>').setAttribute('placeholder', 'NamePositionX');
                     document.getElementById('<%= txtNamePositionY.ClientID %>').setAttribute('placeholder', 'NamePositionY');
                     applyToggle('NameContainer', '<%= chkIncludeContactPerson.ClientID %>', '<%= txtNamePositionX.ClientID %>', '<%= txtNamePositionY.ClientID %>');
-</script>
+                </script>
             </div>
             <!-- Textboxes for EmailPosition -->
             <div id="EmailContainer" style="margin-bottom: 5px;">
@@ -318,7 +288,7 @@
                     document.getElementById('<%= txtEmailPositionX.ClientID %>').setAttribute('placeholder', 'EmailPositionX');
                     document.getElementById('<%= txtEmailPositionY.ClientID %>').setAttribute('placeholder', 'EmailPositionY');
                     applyToggle('EmailContainer', '<%= chkIncludeEmail.ClientID %>', '<%= txtEmailPositionX.ClientID %>', '<%= txtEmailPositionY.ClientID %>');
-</script>
+                </script>
             </div>
             <!-- Textboxes for DatumPosition -->
             <div id="DatumContainer" style="margin-bottom: 5px;">
@@ -330,7 +300,7 @@
                     document.getElementById('<%= txtDatumPositionX.ClientID %>').setAttribute('placeholder', 'DatumPositionX');
                     document.getElementById('<%= txtDatumPositionY.ClientID %>').setAttribute('placeholder', 'DatumPositionY');
                     applyToggle('DatumContainer', '<%= chkIncludeDatum.ClientID %>', '<%= txtDatumPositionX.ClientID %>', '<%= txtDatumPositionY.ClientID %>');
-</script>
+                </script>
             </div>
             <!-- Textboxes for EntrancePosition -->
             <div id="EntranceContainer" style="margin-bottom: 5px;">
@@ -342,7 +312,7 @@
                     document.getElementById('<%= txtEntrancePositionX.ClientID %>').setAttribute('placeholder', 'EntrancePositionX');
                     document.getElementById('<%= txtEntrancePositionY.ClientID %>').setAttribute('placeholder', 'EntrancePositionY');
                     applyToggle('EntranceContainer', '<%= chkIncludeEntrance.ClientID %>', '<%= txtEntrancePositionX.ClientID %>', '<%= txtEntrancePositionY.ClientID %>');
-</script>
+                </script>
             </div>
             <!-- Textboxes for WebbcodePosition -->
             <div id="WebbcodeContainer" style="margin-bottom: 5px;">
@@ -351,10 +321,13 @@
                 <asp:TextBox ID="txtWebbcodePositionX" runat="server" />
                 <asp:TextBox ID="txtWebbcodePositionY" runat="server" />
                 <script type="text/javascript">
-                    document.getElementById('<%= txtWebbcodePositionX.ClientID %>').setAttribute('placeholder', 'WebbcodePositionX');
-                    document.getElementById('<%= txtWebbcodePositionY.ClientID %>').setAttribute('placeholder', 'WebbcodePositionY');
-                    applyToggle('WebbcodeContainer', '<%= chkIncludeWebbcode.ClientID %>', '<%= txtWebbcodePositionX.ClientID %>', '<%= txtWebbcodePositionY.ClientID %>');
-</script>
+                    window.addEventListener('DOMContentLoaded', function () {
+                        document.getElementById('<%= txtWebbcodePositionX.ClientID %>').setAttribute('placeholder', 'WebbcodePositionX');
+                       document.getElementById('<%= txtWebbcodePositionY.ClientID %>').setAttribute('placeholder', 'WebbcodePositionY');
+                       applyToggle('WebbcodeContainer', '<%= chkIncludeWebbcode.ClientID %>', '<%= txtWebbcodePositionX.ClientID %>', '<%= txtWebbcodePositionY.ClientID %>');
+                   });
+                </script>
+
             </div>
             <div>
                 <asp:CheckBox ID="chkIncludeScissorsLine" runat="server" Text=" Scissors Line" Checked="false" CssClass="checkbox-with-gap" />
@@ -373,7 +346,7 @@
         <script type="text/javascript">
             document.getElementById('<%= txtBarcodePositionX.ClientID %>').setAttribute('placeholder', 'PositionX');
             document.getElementById('<%= txtBarcodePositionY.ClientID %>').setAttribute('placeholder', 'PositionY');
-</script>
+        </script>
 
         <br />
         <br />
@@ -397,7 +370,7 @@
                 document.getElementById('<%= txtFontSize.ClientID %>').setAttribute('placeholder', 'txtFontSize');
                 document.getElementById('<%= txtColor.ClientID %>').setAttribute('placeholder', 'txtColor');
                 document.getElementById('<%= TextBox1.ClientID %>').setAttribute('placeholder', 'Id');
-</script>
+            </script>
             <br />
             <br />
             <asp:Button ID="btnAddCustomText" runat="server" Text="Add Custom Text" OnClick="btnAddCustomText_Click" />
@@ -420,10 +393,11 @@
         <script type="text/javascript">
             document.getElementById('<%= txtTicketId.ClientID %>').setAttribute('placeholder', 'Enter Ticket ID');
             document.getElementById('<%= txtShowEventInfo.ClientID %>').setAttribute('placeholder', 'Enter ShowEventInfo ID');
-</script>
+        </script>
         <asp:FileUpload ID="bgFileUpload" runat="server" accept=".png,.jpg" />
         <asp:Button ID="btnGetPredefinedTemplate" runat="server" Text="Get Predefined Template" OnClick="btnGetPredefinedTemplate_Click" />
+        
     </asp:Panel>
     <asp:Literal ID="litScript" runat="server" />
-    <script src="Scripts/main.js" type="text/javascript"></script>
+   
 </asp:Content>
